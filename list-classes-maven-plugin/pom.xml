@@ -19,14 +19,14 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 			xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.linqs</groupId>
+	<groupId>org.linqs.plugins</groupId>
 	<artifactId>list-classes-maven-plugin</artifactId>
 	<name>list-classes-maven-plugin</name>
 	<packaging>maven-plugin</packaging>
 	<description>A Maven plugin that list the packages of the project and drops them into a properties file.</description>
 
 	<parent>
-		<groupId>org.linqs</groupId>
+		<groupId>org.linqs.plugins</groupId>
 		<artifactId>maven-plugins</artifactId>
 		<version>1.0.0</version>
 	</parent>
