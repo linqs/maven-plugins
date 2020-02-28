@@ -48,13 +48,12 @@ public class ListClasses extends AbstractMojo {
             Path rootPath = Paths.get(root);
 
             for (String path : getFiles(root)) {
-                String relPath = rootPath.relativize(Paths.get(path)).toString();
-                if (!relPath.endsWith(".java")) {
+                Path relPath = rootPath.relativize(Paths.get(path));
+                if (!relPath.getFileName().toString().endsWith(".java")) {
                     continue;
                 }
 
-                String name = relPath.replaceFirst("\\.java$", "").replace("/", ".");
-                classNames.add(name);
+                classNames.add(relativePathToClassName(relPath));
             }
         }
 
@@ -66,6 +65,25 @@ public class ListClasses extends AbstractMojo {
         } catch (IOException ex) {
             throw new RuntimeException("Unable to write class list: " + outputPath, ex);
         }
+    }
+
+    /**
+     * Take a relative path (that starts at the first package)
+     * for a file and convert it into a fully qualified class name.
+     */
+    private String relativePathToClassName(Path relPath) {
+        StringBuilder builder = new StringBuilder();
+
+        for (int i = 0; i < relPath.getNameCount(); i++) {
+            if (i == (relPath.getNameCount() - 1)) {
+                builder.append(relPath.getName(i).toString().replaceFirst("\\.java$", ""));
+            } else {
+                builder.append(relPath.getName(i).toString());
+                builder.append(".");
+            }
+        }
+
+        return builder.toString();
     }
 
     private List<String> getFiles(String root) {

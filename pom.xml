@@ -21,7 +21,7 @@
     <groupId>org.linqs</groupId>
     <artifactId>maven-plugins</artifactId>
     <name>maven-plugins</name>
-    <version>1.0.1</version>
+    <version>1.1.0</version>
     <packaging>pom</packaging>
     <description>Plugins from the LINQS research group.</description>
     <url>https://psl.linqs.org</url>
